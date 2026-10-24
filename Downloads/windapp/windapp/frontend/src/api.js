@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const BASE = import.meta.env.VITE_API_URL || "";
+const BASE = "https://kjhwr-wind-monitor.onrender.com";
 
 /** Fetch JSON without ever throwing on empty / non-JSON bodies. Always resolves to { data } or { error }. */
 export async function getJson(path) {
