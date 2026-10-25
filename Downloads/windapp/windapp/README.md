@@ -8,7 +8,7 @@ A decision-support web app for a GB utility's day-ahead power-buying desk. It an
 Scope: national GB wind only, Elexon BMRS only (`FUELHH` actuals with `fuelType = WIND`, `WINDFOR` forecasts),
 for **delivery days in January 2026**.
 
-**Live app:** `<add Vercel URL here after deploying>`
+**Live app:** `https://windapp-zqwf.vercel.app/`
 
 > ## AI-assistance disclosure
 > This project was built with the assistance of AI tools (Claude, by Anthropic) for design, code generation,
@@ -27,6 +27,11 @@ for **delivery days in January 2026**.
                                              └── serves the built UI at "/" in Docker
 ```
 
+- **Data Sources:** 
+  - Actuals: [Elexon FUELHH Stream](https://bmrs.elexon.co.uk/api-documentation/endpoint/datasets/FUELHH/stream) (`fuelType = WIND`, 30-min settlement)
+  - Forecasts: [Elexon WINDFOR Stream](https://bmrs.elexon.co.uk/api-documentation/endpoint/datasets/WINDFOR/stream) (`publishTime`, `startTime`, `generation`)
+
+  
 * **Snapshot, not live calls.** Data is fetched once into two JSON files. The app is fast, reproducible and
   independent of Elexon availability (important for serverless deploys). `POST /api/refresh` re-pulls it.
 * **Analysis is pure and tested.** `analysis.py` has no web or network code, so every number on screen is unit-tested.
